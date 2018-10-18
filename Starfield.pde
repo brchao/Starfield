@@ -22,11 +22,12 @@ void draw()
 class NormalParticle implements Particle
 {
 	int myColor;
-	double myX, myY, myAngle, mySpeed, myX2, myY2, myX3, myY3, myX4, myY4;
+	double myX, myY, myAngle, mySpeed, myX2, myY2, myX3, myY3, myX4, myY4, myX5, myY5;
 
 	NormalParticle(){
 		myX = myY = myX3 = myY4 = 0;
 		myX2 = myY2 = myY3 = myX4 = 600;
+		myX5 = myY5 = 300;
 		myAngle = Math.random()*2*Math.PI;
 		mySpeed = Math.random()*10;
 		myColor = color((int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256));
@@ -42,6 +43,8 @@ class NormalParticle implements Particle
 		myY3 = myY3 + Math.sin(myAngle)*mySpeed;
 		myX4 = myX4 + Math.cos(myAngle)*mySpeed;
 		myY4 = myY4 + Math.sin(myAngle)*mySpeed;
+		myX5 = myX5 + Math.cos(myAngle)*mySpeed;
+		myY5 = myY5 + Math.sin(myAngle)*mySpeed;
 		myAngle = myAngle + 0.03;
 	}
 	public void show()
@@ -51,6 +54,7 @@ class NormalParticle implements Particle
 		ellipse((int)myX2,(int)myY2,5,5);
 		ellipse((int)myX3,(int)myY3,5,5);
 		ellipse((int)myX4,(int)myY4,5,5);
+		ellipse((int)myX5,(int)myY5,5,5);
 	}
 
 }
@@ -89,6 +93,13 @@ class OddballParticle implements Particle //uses an interface
 }
 class JumboParticle extends NormalParticle//uses inheritance
 {
-	
+	public void show(){
+		fill(255,255,0);
+		ellipse((int)myX5,(int)myY5,50,50);
+	}
+}
+
+void mousePressed(){
+	redraw();
 }
 
